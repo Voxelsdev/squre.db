@@ -1,30 +1,32 @@
- <html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Database V0.1.0</title>
+    <!-- <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="../styling/stylesheet.css">
+	  <link rel="stylesheet" type="text/css" href="../styling/assets/opensans.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
 
-	<script type="text/javascript" src = "JS/main.js"></script>
-	<title>Database V0.1.0</title>
-	<div id="header">
-		<span>
-			<img src="styling/assets/logo_sml.png" alt="logo_sml.png" style="width:64px;height:64px;font-size:12px;margin:18px;">
-			<p style="position:absolute;top:-20px;left:90px;"><b style='font-size:52;font-weight:normal'>D</b>ATABASE&nbsp<b style='font-size:52;font-weight:normal'>P</b>ROJECT</p>
-		</span>
-		<p style="position:absolute;font-size:12px;font-weight:200;top:75px;left:90;color:#ccc;">
-		Title is subject to change
-			<!--Subtitle and fine text goes here-->
-		</p>
-	</div>	
-	<body>
-		<div id="search" class="main">
-			<div style="width:200px">
-				<!--text-->
+    <div id="header">
+  		<span>
+  			<img src="../styling/assets/logo_sml.png" alt="logo_sml.png">
+  			<p><b>D</b>ATABASE&nbsp;<b>P</b>ROJECT</p>
+  		</span>
+  		<p>Title is subject to change</p>
+  	</div>
+
+    <div id="search" class="main">
+      <div style="width:200px">
 				<form style="margin:20px">
 					 <b style="color:#666;font-weight:600;">Search:</b>
 					<br>
-					<input onfocus="if (this.value=='Search:') this.value = ''" onblur="if (this.value=='') this.value = 'Search:'"type="text" id="searchterm" name="searchterm" value="" style="width:200px">
+          <input type='text' id="searchterm" placeholder="Search:" style="width:200px;">
 					<button id="submit" onclick="search()">Submit</button>
 				</form>
 				<div style="margin:20px">
-					<!--Remember to add the actual function that updates the right side of the page-->
-					<!--Should reference a function which calls a pos in an array, avoid rewriting html-->
 					<button id="result1" onclick="displayInfo(0)">Result 1</button>
 					<button id="result2" onclick="displayInfo(1)">Result 2</button>
 					<button id="result3" onclick="displayInfo(2)">Result 3</button>
@@ -46,108 +48,91 @@
 					<button id="result19" onclick="displayInfo(18)">Result 19</button>
 					<button id="result20" onclick="displayInfo(19)">Result 20</button>
 					<button id="next" onclick="displayInfo()">Next Page</button>
-					<!-- Extend this to maybe 20 or 30-->
 				</div>
-				
 			</div>
-		
 		</div>
-	
+
 		<div id="info">
-			<!--div id="dragbar"></div-->			
 			<div id="table" class="main" style="margin:20px">
-				<!--div id="tableLabels">
-					<p>	</p>
-					<p style="color:#666;font-weight:600;"> Customer: </p>
-					<p style="color:#666;font-weight:600;"> Ship To:</p>
-					<p style="color:#666;font-weight:600;"> Bill To:</p>
-				</div>-->
 				<div id="tableInput">
-					<!--<b style="color:#aaa;">Shipping Information</b>-->
 					<br>
-					<!--Customer-->
-					<!--<input name="searchbox" onfocus="if (this.value=='search') this.value = ''" type="text" value="search">-->
-					<input onfocus="if (this.value=='Customer:') this.value = ''" onblur="if (this.value=='') this.value = 'Customer:'" type = "text" id = "company" value = "Customer:" style="width:350px;height:50px;font-size:26px;font-weight:700;">
+            <input type="text" id="company" placeholder="Customer" style="width:350px;height:50px;font-size:26px;font-weight:700;">
 					</br>
 					<p></p>
 					<b style="color:#aaa;">Contact Information</b>
 					<br>
-					<input onfocus="if (this.value=='Contact:') this.value = ''" onblur="if (this.value=='') this.value = 'Contact:'"type = "text" id = "nameC" value = "Contact:">
-					<input onfocus="if (this.value=='Title:') this.value = ''" onblur="if (this.value=='') this.value = 'Title:'"type = "text" id = "titleC" value = "Title:">
-					<input onfocus="if (this.value=='Department:') this.value = ''" onblur="if (this.value=='') this.value = 'Department:'"type = "text" id = "departmentC" value = "Department:">
-					<input onfocus="if (this.value=='Email:') this.value = ''" onblur="if (this.value=='') this.value = 'Email:'"type = "text" id = "emailC" value = "Email:">
-					<p></p>
-					<input onfocus="if (this.value=='Ph. Office:) this.value = ''" onblur="if (this.value=='') this.value = 'Ph. Office:'"type = "text" id = "phoneC" value = "Ph. Office:">
-					<input onfocus="if (this.value=='Ph. Mobile:') this.value = ''" onblur="if (this.value=='') this.value = 'Ph. Mobile:'"type = "text" id = "phoneC" value = "Ph. Mobile:">
-					<input onfocus="if (this.value=='Ph. Dept:') this.value = ''" onblur="if (this.value=='') this.value = 'Ph. Dept:'"type = "text" id = "phoneC" value = "Ph. Dept:">					
-					<input onfocus="if (this.value=='Fax:') this.value = ''" onblur="if (this.value=='') this.value = 'Fax:'"type = "text" id = "phoneC" value = "Fax:">
+            <input type="text" id="name-c" placeholder="Contact:">
+            <input type="text" id="title-c" placeholder="Title:">
+            <input type="text" id="department-c" placeholder="Department:">
+            <input type="text" id="email-c" placeholder="Email:">
+  					<p></p>
+            <input type='text' id="phone-co" placeholder="Ph. Office:">
+            <input type='text' id="phone-cm" placeholder="Ph. Mobile:">
+            <input type="text" id="phone-cd" placeholder="Ph. Dept:">
+            <input type="text" id="fax-c" placeholder="Fax:">
 					</br>
-					<!--Ship To-->
-					<p></p>
-					<b style="color:#aaa;">Ship To</b>
-					<br>
-					<input onfocus="if (this.value=='Address:') this.value = ''" onblur="if (this.value=='') this.value = 'Address:'"type = "text" id = "addressS" value = "Address:">
-					<input onfocus="if (this.value=='City:') this.value = ''" onblur="if (this.value=='') this.value = 'City:'"type = "text" id = "addressCityS" value = "City:">
-					<input onfocus="if (this.value=='State:') this.value = ''" onblur="if (this.value=='') this.value = 'State:'"type = "text" id = "addressStateS" value = "State:" style="width: 50px;">
-					<input onfocus="if (this.value=='Country:') this.value = ''" onblur="if (this.value=='') this.value = 'Country:'"type = "text" id = "addressCountryS" value = "Country:" style="width: 100px;">
-					<input onfocus="if (this.value=='ZIP:') this.value = ''" onblur="if (this.value=='') this.value = 'ZIP:'"type = "text" id = "addressZipS" value = "ZIP:" style="width: 50px;">
+  				<p></p>
+  				<b style="color:#aaa;">Ship To</b>
+  				<br>
+            <input type="text" id="address-s" placeholder="Address:">
+            <input type="text" id="address-city-s" placeholder="City:">
+            <input type="text" id="address-state-s" placeholder="State:" style="width: 50px;">
+            <input type="text" id="address-country-s" placeholder="Country:" style="width: 100px;">
+            <input type="text" id="address-zip-s" placeholder="ZIP:" style="width: 50px;">
 					</br>
 					<p></p>
 					<b style="color:#aaa;">Shipping Contact Information</b>
 					<br>
-					<input onfocus="if (this.value=='Contact:') this.value = ''" onblur="if (this.value=='') this.value = 'Contact:'"type = "text" id = "nameS" value = "Contact:">
-					<input onfocus="if (this.value=='Title:') this.value = ''" onblur="if (this.value=='') this.value = 'Title:'"type = "text" id = "titleS" value = "Title:">
-					<input onfocus="if (this.value=='Department:') this.value = ''" onblur="if (this.value=='') this.value = 'Department:'"type = "text" id = "departmentS" value = "Department:">
-					<input onfocus="if (this.value=='Email:') this.value = ''" onblur="if (this.value=='') this.value = 'Email:'"type = "text" id = "emailS" value = "Email:">
-					<p></p>
-					<input onfocus="if (this.value=='Ph. Office:) this.value = ''" onblur="if (this.value=='') this.value = 'Ph. Office:'"type = "text" id = "phoneS" value = "Ph. Office:">
-					<input onfocus="if (this.value=='Ph. Mobile:') this.value = ''" onblur="if (this.value=='') this.value = 'Ph. Mobile:'"type = "text" id = "phoneS" value = "Ph. Mobile:">
-					<input onfocus="if (this.value=='Ph. Dept:') this.value = ''" onblur="if (this.value=='') this.value = 'Ph. Dept:'"type = "text" id = "phoneS" value = "Ph. Dept:">					
-					<input onfocus="if (this.value=='Fax:') this.value = ''" onblur="if (this.value=='') this.value = 'Fax:'"type = "text" id = "phoneS" value = "Fax:">
+            <input type="text" id="name-s" placeholder="Contact:">
+            <input type="text" id="title-s" placeholder="Title:">
+            <input type="text" id="department-s" placeholder="Department:">
+            <input type="text" id="email-s" placeholder="Email:">
+  					<p></p>
+            <input type="text" id="phone-so" placeholder="Ph. Office:">
+            <input type="text" id="phone-sm" placeholder="Ph. Mobile:">
+            <input type="text" id="phone-sd" placeholder="Ph. Dept:">
+            <input type="text" id="fax-s" placeholder="Fax:">
 					</br>
 					<!--Bill To-->
 					<p></p>
 					<b style="color:#aaa;">Bill To</b>
 					<br>
-					<input onfocus="if (this.value=='Address:') this.value = ''" onblur="if (this.value=='') this.value = 'Address:'"type = "text" id = "addressB" value = "Address:">
-					<input onfocus="if (this.value=='City:') this.value = ''" onblur="if (this.value=='') this.value = 'City:'"type = "text" id = "addressCityB" value = "City:">
-					<input onfocus="if (this.value=='State:') this.value = ''" onblur="if (this.value=='') this.value = 'State:'"type = "text" id = "addressStateB" value = "State:" style="width: 50px;">
-					<input onfocus="if (this.value=='Country:') this.value = ''" onblur="if (this.value=='') this.value = 'Country:'"type = "text" id = "addressCountryB" value = "Country:" style="width: 100px;">
-					<input onfocus="if (this.value=='ZIP:') this.value = ''" onblur="if (this.value=='') this.value = 'ZIP:'"type = "text" id = "addressZipB" value = "ZIP:" style="width: 50px;">
+            <input type="text" id="address-B" placeholder="Address:">
+            <input type="text" id="address-state-b" placeholder="City:">
+            <input type="text" id="address-state-b" placeholder="State:" style="width: 50px;">
+            <input type="text" id="address-country-b" placeholder="Country:" style="width: 100px;">
+            <input type="text" id="address-zip-b" placeholder="ZIP:" style="width: 50px;">
 					</br>
 					<p></p>
 					<b style="color:#aaa;">Billing Contact Information</b>
 					<br>
-					<input onfocus="if (this.value=='Contact:') this.value = ''" onblur="if (this.value=='') this.value = 'Contact:'"type = "text" id = "nameB" value = "Contact:">
-					<input onfocus="if (this.value=='Title:') this.value = ''" onblur="if (this.value=='') this.value = 'Title:'"type = "text" id = "titleB" value = "Title:">
-					<input onfocus="if (this.value=='Department:') this.value = ''" onblur="if (this.value=='') this.value = 'Department:'"type = "text" id = "departmentB" value = "Department:">
-					<input onfocus="if (this.value=='Email:') this.value = ''" onblur="if (this.value=='') this.value = 'Email:'"type = "text" id = "emailB" value = "Email:">
-					<p></p>
-					<input onfocus="if (this.value=='Ph. Office:) this.value = ''" onblur="if (this.value=='') this.value = 'Ph. Office:'"type = "text" id = "phoneB" value = "Ph. Office:">
-					<input onfocus="if (this.value=='Ph. Mobile:') this.value = ''" onblur="if (this.value=='') this.value = 'Ph. Mobile:'"type = "text" id = "phoneB" value = "Ph. Mobile:">
-					<input onfocus="if (this.value=='Ph. Dept:') this.value = ''" onblur="if (this.value=='') this.value = 'Ph. Dept:'"type = "text" id = "phoneB" value = "Ph. Dept:">					
-					<input onfocus="if (this.value=='Fax:') this.value = ''" onblur="if (this.value=='') this.value = 'Fax:'"type = "text" id = "phoneB" value = "Fax:">
+            <input type="text" id="name-b" placeholder="Contact:">
+            <input type="text" id="title-b" placeholder="Title:">
+            <input type="text" id="department-b" placeholder="Dept:">
+            <input type="text" id="email-b" placeholder="Email:">
+            <input type="text" id="phone-bo" placeholder="Ph. Office:">
+            <input type="text" id="phone-bm" placeholder="Ph. Mobile:">
+            <input type="text" id="phone-bd" placeholder="Ph. Dept:">
+            <input type="text" id="fax-b" placeholder="Fax:">
 					</br>
 					<br>
 					<p></p>
-					<!--<button id = "submitInfo" onclick = "updateInfo()">Update</button>-->
 				</div>
 				<input type="text" id="tabInpt" name="tabInpt" value="" onchange="setText(this.value)" style="width:485px">
 				<button id="submit" onclick="setText(tabInpt.value)">Update</button>
 				<button type="button" id="newCol" onClick="addCol(0)"> New Column</button>
 				<button type="button" id="newRow" onClick="addRow()"> New Row</button>
-				
+
 				<canvas id="canvas" onresize="resize()" style="border:3px ridge lightgrey;"></canvas>
 			</div>
 		</div>
-	</body>
-	<footer id="footer">
+
+    <!-- <script type="text/javavscript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script> -->
+    <script type="text/javascript" src="../js/main.js"></script>
+  </body>
+
+  <footer id="footer">
 		&copy; 2016, Ben Chan &amp; Tyler Miller
 	</footer>
-	
-	<link rel="stylesheet" type="text/css" href="styling/stylesheet.css">
-	<link rel="stylesheet" type="text/css" href="styling/assets/opensans.css">
-	<!--link rel="stylesheet" type="text/css" href="styling/assets/alegreyasanssc.css"-->
-
-	
 </html>
