@@ -45,6 +45,25 @@ span {
 	border-bottom: 5px ridge lightgrey;
 	height:110px;
 }
+
+#logo {
+	width:64px;
+	height:64px;
+	font-size:12px;
+	margin:18px;
+}
+
+#header span p {
+	position:absolute;
+	top:-20px;
+	left:90px;
+}
+
+#header span p b {
+	font-size:52;
+	font-weight:normal;
+}
+
 #search {
 	background-color: #e3e3e7;
 	float:left;
@@ -62,6 +81,16 @@ span {
 #searchresults {
 	width:200px;
 }
+
+#info {
+  position:absolute;
+  font-size:12px;
+  font-weight:200;
+  top:75px;
+  left:90;
+  color:#ccc;
+}
+
 #custinfo {
 	background-color: #efeff2;
 	float:right;
