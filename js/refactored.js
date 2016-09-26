@@ -1,10 +1,10 @@
-let mainData;
+let mainData = [] ;
 let currentID = 0;
-
+// http://snpy.in/q8xEpR
 function Customer() {
-  this.id = mainData.length;
+  this.id = mainData.length,
   this.generalInfo = {
-    company: null;
+    company: null,
     cName: null,
     cTitle: null,
     cDept: null,
@@ -41,7 +41,7 @@ function Customer() {
     bfax: null
   }
   this.productInfo = {
-    someShit: null;
+    state: null
   }
 }
 
@@ -72,6 +72,8 @@ function saveCustomer() {
 }
 
 function addInfo() {
+  currentID = mainData.length;
+  new Customer();
   const currentCustomer = mainData[currentID];
   currentCustomer.generalInfo.company = $('#company').value;
   currentCustomer.generalInfo.cName = $('#name-c').value;
@@ -116,7 +118,6 @@ function addInfo() {
 }
 
 $('#new-customer').on('click', () => {
-  currentID = mainData.length;
   // saveCustomer(currentID);
   $('.form').removeAttr('value');
   $('#new-customer').remove();
@@ -133,9 +134,51 @@ $('#new-customer').on('click', () => {
   });
   $sC.append($add);
   $sC.append($cancel);
-  new Customer();
 });
+
+function makeModals() {
+  let currentIDM = 0;
+
+  for (let i = 1; i <= 7; i++) {
+    let $row = $('<div class="row"></div>');
+
+    for (let j = 1; j <= 5; j++) {
+      currentIDM++;
+      if (j === 1) {
+        var $mainCol = $(`<div class="col s1 offset-s3">`);
+      } else {
+        var $mainCol = $(`<div class="col s1">`);
+      }
+      const $modalFooter = $(`<div class="modal-footer">`);
+      const $modalFooterRow = $(`<div class="row">`);
+      const $inputCol = $(`<div class="col s3 offset-s1">`);
+      const $input = $(`<input type="text" class="answer-submit" placeholder="Add a note here" autofocus>`);
+      const $checkCol = $(`<div class="col s3">`);
+      const $checkAnswer = $(`<a class="modal-action modal-close waves-effect waves-light btn blue-grey darken-1">\u2705</a>`);
+      const $modalContainer = $(`<div class="modal-button-container">`);
+      const $modalActivator = $(`<a class="modal-trigger waves-effect waves-light btn col${j}" href="#divArt${currentIDM}">${mainData[currentID].productInfo.state}</a>`);
+      const $modalType = $(`<div id="divArt${currentIDM}" class="modal modal-fixed-footer">`);
+      const $modalContent = $(`<div class="modal-content">`);
+      const $articleQuestion = $(`<p class="article-question" id="row${i}col${j}">Loading...</p>`);
+
+      $checkCol.append($checkAnswer);
+      $inputCol.append($input);
+      $modalFooterRow.append($inputCol);
+      $modalFooterRow.append($checkCol);
+      $modalFooter.append($modalFooterRow);
+      $modalContent.append($articleQuestion);
+      $modalType.append($modalContent);
+      $modalType.append($modalFooter);
+      $modalContainer.append($modalActivator);
+      $modalContainer.append($modalType);
+      $mainCol.append($modalContainer);
+      $row.append($mainCol);
+    }
+    $('#squares-container').append($row);
+  }
+}
 
 (function init() {
   loadInfo();
+  makeModals();
 })();

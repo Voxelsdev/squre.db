@@ -34,9 +34,11 @@ span {
 	position:absolute;
 	display:block;
 }
+
 #footer{
 	background-color:#ddd;
 }
+
 #header {
 	font-size: 44px;
 	/**font-family:'';**/
@@ -45,6 +47,14 @@ span {
 	border-bottom: 5px ridge lightgrey;
 	height:110px;
 }
+
+#squares-container {
+	width: 100%;
+	height: 100%;
+	background-color: #efeff2;
+}
+
+#
 
 #logo {
 	width:64px;

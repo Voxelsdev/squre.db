@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <title>Database V0.1.0</title>
-    <!-- <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css"> -->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="../styling/stylesheet.css">
 	  <link rel="stylesheet" type="text/css" href="../styling/assets/opensans.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -55,76 +55,160 @@
 		<div id="info">
 			<div id="table" class="main" style="margin:20px">
 				<div id="tableInput">
-					<br>
+					<div class="row" id='input-container'>
             <input type="text" id="company" class="form" placeholder="Customer" style="width:350px;height:50px;font-size:26px;font-weight:700;">
-					</br>
-					<p></p>
-					<b style="color:#aaa;">Contact Information</b>
-					<br>
-            <input type="text" id="name-c" class="form" placeholder="Contact:">
-            <input type="text" id="title-c" class="form" placeholder="Title:">
-            <input type="text" id="department-c" class="form" placeholder="Department:">
-            <input type="text" id="email-c" class="form" placeholder="Email:">
-  					<p></p>
-            <input type='text' id="phone-co" class="form" placeholder="Ph. Office:">
-            <input type='text' id="phone-cm" class="form" placeholder="Ph. Mobile:">
-            <input type="text" id="phone-cd" class="form" placeholder="Ph. Dept:">
-            <input type="text" id="fax-c" class="form" placeholder="Fax:">
-					</br>
-  				<p></p>
-  				<b style="color:#aaa;">Ship To</b>
-  				<br>
-            <input type="text" id="address-s" class="form" placeholder="Address:">
-            <input type="text" id="address-city-s" class="form" placeholder="City:">
-            <input type="text" id="address-state-s" class="form" placeholder="State:" style="width: 50px;">
-            <input type="text" id="address-country-s" class="form" placeholder="Country:" style="width: 100px;">
-            <input type="text" id="address-zip-s" class="form" placeholder="ZIP:" style="width: 50px;">
-					</br>
-					<p></p>
-					<b style="color:#aaa;">Shipping Contact Information</b>
-					<br>
-            <input type="text" id="name-s" class="form" placeholder="Contact:">
-            <input type="text" id="title-s" class="form" placeholder="Title:">
-            <input type="text" id="department-s" class="form" placeholder="Department:">
-            <input type="text" id="email-s" class="form" placeholder="Email:">
-  					<p></p>
-            <input type="text" id="phone-so" class="form" placeholder="Ph. Office:">
-            <input type="text" id="phone-sm" class="form" placeholder="Ph. Mobile:">
-            <input type="text" id="phone-sd" class="form" placeholder="Ph. Dept:">
-            <input type="text" id="fax-s" class="form" placeholder="Fax:">
-					</br>
-					<!--Bill To-->
-					<p></p>
-					<b style="color:#aaa;">Bill To</b>
-					<br>
-            <input type="text" id="address-B" class="form" placeholder="Address:">
-            <input type="text" id="address-city-b" class="form" placeholder="City:">
-            <input type="text" id="address-state-b" class="form" placeholder="State:" style="width: 50px;">
-            <input type="text" id="address-country-b" class="form" placeholder="Country:" style="width: 100px;">
-            <input type="text" id="address-zip-b" class="form" placeholder="ZIP:" style="width: 50px;">
-					</br>
-					<p></p>
-					<b style="color:#aaa;">Billing Contact Information</b>
-					<br>
-            <input type="text" id="name-b" class="form" placeholder="Contact:">
-            <input type="text" id="title-b" class="form" placeholder="Title:">
-            <input type="text" id="department-b" class="form" placeholder="Dept:">
-            <input type="text" id="email-b" class="form" placeholder="Email:">
-            <input type="text" id="phone-bo" class="form" placeholder="Ph. Office:">
-            <input type="text" id="phone-bm" class="form" placeholder="Ph. Mobile:">
-            <input type="text" id="phone-bd" class="form" placeholder="Ph. Dept:">
-            <input type="text" id="fax-b" class="form" placeholder="Fax:">
-					</br>
-					<br>
-					<p></p>
-				</div>
-				<input type="text" id="tabInpt" name="tabInpt" value="" onchange="setText(this.value)" style="width:485px">
 
-        <div id='submit-container'>
-          <button id="new-customer">New Customer</button>
+            <div class="row">
+              <div class="row">
+  					    <b style="color:#aaa;">Contact Information</b>
+              </div>
+              <div class="row">
+                <div class="col s3">
+                  <input type="text" id="name-c" class="form" placeholder="Contact:">
+                </div>
+                <div class="col s3">
+                  <input type="text" id="title-c" class="form" placeholder="Title:">
+                </div>
+                <div class="col s3">
+                  <input type="text" id="department-c" class="form" placeholder="Department:">
+                </div>
+                <div class="col s3">
+                  <input type="text" id="email-c" class="form" placeholder="Email:">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col s3">
+                  <input type='text' id="phone-co" class="form" placeholder="Ph. Office:">
+                </div>
+                <div class="col s3">
+                  <input type='text' id="phone-cm" class="form" placeholder="Ph. Mobile:">
+                </div>
+                <div class="col s3">
+                  <input type="text" id="phone-cd" class="form" placeholder="Ph. Dept:">
+                </div>
+                <div class="col s3">
+                  <input type="text" id="fax-c" class="form" placeholder="Fax:">
+                </div>
+              </div>
+
+            <div class="row">
+    				  <b style="color:#aaa;">Ship To</b>
+            </div>
+            <div class="row">
+              <div class="col s3">
+                <input type="text" id="address-s" class="form" placeholder="Address:">
+              </div>
+              <div class="col s3">
+                <input type="text" id="address-city-s" class="form" placeholder="City:">
+              </div>
+              <div class="col s1">
+                <input type="text" id="address-state-s" class="form" placeholder="State:">
+              </div>
+              <div class="col s2">
+                <input type="text" id="address-country-s" class="form" placeholder="Country:">
+              </div>
+              <div class="col s1">
+                <input type="text" id="address-zip-s" class="form" placeholder="ZIP:">
+              </div>
+            </div>
+
+            <div class="row">
+  					  <b style="color:#aaa;">Shipping Contact Information</b>
+            </div>
+            <div class="row">
+              <div class="col s3">
+                <input type="text" id="name-s" class="form" placeholder="Contact:">
+              </div>
+              <div class="col s3">
+                <input type="text" id="title-s" class="form" placeholder="Title:">
+              </div>
+              <div class="col s3">
+                <input type="text" id="department-s" class="form" placeholder="Department:">
+              </div>
+              <div class="col s3">
+                <input type="text" id="email-s" class="form" placeholder="Email:">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s3">
+                <input type="text" id="phone-so" class="form" placeholder="Ph. Office:">
+              </div>
+              <div class="col s3">
+                <input type="text" id="phone-sm" class="form" placeholder="Ph. Mobile:">
+              </div>
+              <div class="col s3">
+                <input type="text" id="phone-sd" class="form" placeholder="Ph. Dept:">
+              </div>
+              <div class="col s3">
+                <input type="text" id="fax-s" class="form" placeholder="Fax:">
+              </div>
+            </div>
+
+            <div class="row">
+  					  <b style="color:#aaa;">Bill To</b>
+            </div>
+            <div class="row">
+              <div class="col s3">
+                <input type="text" id="address-B" class="form" placeholder="Address:">
+              </div>
+              <div class="col s3">
+                <input type="text" id="address-city-b" class="form" placeholder="City:">
+              </div>
+              <div class="col s1">
+                <input type="text" id="address-state-b" class="form" placeholder="State:">
+              </div>
+              <div class="col s2">
+                <input type="text" id="address-country-b" class="form" placeholder="Country:">
+              </div>
+              <div class="col s1">
+                <input type="text" id="address-zip-b" class="form" placeholder="ZIP:">
+              </div>
+            </div>
+
+            <div class="row">
+  					  <b style="color:#aaa;">Billing Contact Information</b>
+            </div>
+            <div class="row">
+              <div class="col s3">
+                <input type="text" id="name-b" class="form" placeholder="Contact:">
+              </div>
+              <div class="col s3">
+                <input type="text" id="title-b" class="form" placeholder="Title:">
+              </div>
+              <div class="col s3">
+                <input type="text" id="department-b" class="form" placeholder="Dept:">
+              </div>
+              <div class="col s3">
+                <input type="text" id="email-b" class="form" placeholder="Email:">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s3">
+                <input type="text" id="phone-bo" class="form" placeholder="Ph. Office:">
+              </div>
+              <div class="col s3">
+                <input type="text" id="phone-bm" class="form" placeholder="Ph. Mobile:">
+              </div>
+              <div class="col s3">
+                <input type="text" id="phone-bd" class="form" placeholder="Ph. Dept:">
+              </div>
+              <div class="col s3">
+                <input type="text" id="fax-b" class="form" placeholder="Fax:">
+              </div>
+            </div>
+          </div>
+				</div>
+				<!-- <input type="text" id="tabInpt" name="tabInpt" value="" onchange="setText(this.value)" style="width:485px"> -->
+        <div class="row">
+          <div class="col s4" id='submit-container'>
+            <button id="new-customer">New Customer</button>
+          </div>
         </div>
 
-				<canvas id="canvas" onresize="resize()" style="border:3px ridge lightgrey;"></canvas>
+				<div class="row" id="squares-container">
+
+        </div>
 			</div>
 		</div>
 
@@ -133,7 +217,7 @@
     <script type="text/javascript" src="../js/refactored.js"></script>
   </body>
 
-  <footer id="footer">
+  <!-- <footer id="footer">
 		&copy; 2016, Ben Chan &amp; Tyler Miller
-	</footer>
+	</footer> -->
 </html>
