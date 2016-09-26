@@ -27,27 +27,27 @@
 					<button id="submit" onclick="search()">Submit</button>
 				</form>
 				<div style="margin:20px">
-					<button id="result1" onclick="displayInfo(0)">Result 1</button>
-					<button id="result2" onclick="displayInfo(1)">Result 2</button>
-					<button id="result3" onclick="displayInfo(2)">Result 3</button>
-					<button id="result4" onclick="displayInfo(3)">Result 4</button>
-					<button id="result5" onclick="displayInfo(4)">Result 5</button>
-					<button id="result6" onclick="displayInfo(5)">Result 6</button>
-					<button id="result7" onclick="displayInfo(6)">Result 7</button>
-					<button id="result8" onclick="displayInfo(7)">Result 8</button>
-					<button id="result9" onclick="displayInfo(8)">Result 9</button>
-					<button id="result10" onclick="displayInfo(9)">Result 10</button>
-					<button id="result11" onclick="displayInfo(10)">Result 11</button>
-					<button id="result12" onclick="displayInfo(11)">Result 12</button>
-					<button id="result13" onclick="displayInfo(12)">Result 13</button>
-					<button id="result14" onclick="displayInfo(13)">Result 14</button>
-					<button id="result15" onclick="displayInfo(14)">Result 15</button>
-					<button id="result16" onclick="displayInfo(15)">Result 16</button>
-					<button id="result17" onclick="displayInfo(16)">Result 17</button>
-					<button id="result18" onclick="displayInfo(17)">Result 18</button>
-					<button id="result19" onclick="displayInfo(18)">Result 19</button>
-					<button id="result20" onclick="displayInfo(19)">Result 20</button>
-					<button id="next" onclick="displayInfo()">Next Page</button>
+					<button id="result0">Result 1</button>
+					<button id="result1">Result 2</button>
+					<button id="result2">Result 3</button>
+					<button id="result3">Result 4</button>
+					<button id="result4">Result 5</button>
+					<button id="result5">Result 6</button>
+					<button id="result6">Result 7</button>
+					<button id="result7">Result 8</button>
+					<button id="result8">Result 9</button>
+					<button id="result9">Result 10</button>
+					<button id="result10">Result 11</button>
+					<button id="result11">Result 12</button>
+					<button id="result12">Result 13</button>
+					<button id="result13">Result 14</button>
+					<button id="result14">Result 15</button>
+					<button id="result15">Result 16</button>
+					<button id="result16">Result 17</button>
+					<button id="result17">Result 18</button>
+					<button id="result18">Result 19</button>
+					<button id="result19">Result 20</button>
+					<!-- <button id="next" onclick="displayInfo()">Next Page</button> -->
 				</div>
 			</div>
 		</div>
@@ -56,80 +56,81 @@
 			<div id="table" class="main" style="margin:20px">
 				<div id="tableInput">
 					<br>
-            <input type="text" id="company" placeholder="Customer" style="width:350px;height:50px;font-size:26px;font-weight:700;">
+            <input type="text" id="company" class="form" placeholder="Customer" style="width:350px;height:50px;font-size:26px;font-weight:700;">
 					</br>
 					<p></p>
 					<b style="color:#aaa;">Contact Information</b>
 					<br>
-            <input type="text" id="name-c" placeholder="Contact:">
-            <input type="text" id="title-c" placeholder="Title:">
-            <input type="text" id="department-c" placeholder="Department:">
-            <input type="text" id="email-c" placeholder="Email:">
+            <input type="text" id="name-c" class="form" placeholder="Contact:">
+            <input type="text" id="title-c" class="form" placeholder="Title:">
+            <input type="text" id="department-c" class="form" placeholder="Department:">
+            <input type="text" id="email-c" class="form" placeholder="Email:">
   					<p></p>
-            <input type='text' id="phone-co" placeholder="Ph. Office:">
-            <input type='text' id="phone-cm" placeholder="Ph. Mobile:">
-            <input type="text" id="phone-cd" placeholder="Ph. Dept:">
-            <input type="text" id="fax-c" placeholder="Fax:">
+            <input type='text' id="phone-co" class="form" placeholder="Ph. Office:">
+            <input type='text' id="phone-cm" class="form" placeholder="Ph. Mobile:">
+            <input type="text" id="phone-cd" class="form" placeholder="Ph. Dept:">
+            <input type="text" id="fax-c" class="form" placeholder="Fax:">
 					</br>
   				<p></p>
   				<b style="color:#aaa;">Ship To</b>
   				<br>
-            <input type="text" id="address-s" placeholder="Address:">
-            <input type="text" id="address-city-s" placeholder="City:">
-            <input type="text" id="address-state-s" placeholder="State:" style="width: 50px;">
-            <input type="text" id="address-country-s" placeholder="Country:" style="width: 100px;">
-            <input type="text" id="address-zip-s" placeholder="ZIP:" style="width: 50px;">
+            <input type="text" id="address-s" class="form" placeholder="Address:">
+            <input type="text" id="address-city-s" class="form" placeholder="City:">
+            <input type="text" id="address-state-s" class="form" placeholder="State:" style="width: 50px;">
+            <input type="text" id="address-country-s" class="form" placeholder="Country:" style="width: 100px;">
+            <input type="text" id="address-zip-s" class="form" placeholder="ZIP:" style="width: 50px;">
 					</br>
 					<p></p>
 					<b style="color:#aaa;">Shipping Contact Information</b>
 					<br>
-            <input type="text" id="name-s" placeholder="Contact:">
-            <input type="text" id="title-s" placeholder="Title:">
-            <input type="text" id="department-s" placeholder="Department:">
-            <input type="text" id="email-s" placeholder="Email:">
+            <input type="text" id="name-s" class="form" placeholder="Contact:">
+            <input type="text" id="title-s" class="form" placeholder="Title:">
+            <input type="text" id="department-s" class="form" placeholder="Department:">
+            <input type="text" id="email-s" class="form" placeholder="Email:">
   					<p></p>
-            <input type="text" id="phone-so" placeholder="Ph. Office:">
-            <input type="text" id="phone-sm" placeholder="Ph. Mobile:">
-            <input type="text" id="phone-sd" placeholder="Ph. Dept:">
-            <input type="text" id="fax-s" placeholder="Fax:">
+            <input type="text" id="phone-so" class="form" placeholder="Ph. Office:">
+            <input type="text" id="phone-sm" class="form" placeholder="Ph. Mobile:">
+            <input type="text" id="phone-sd" class="form" placeholder="Ph. Dept:">
+            <input type="text" id="fax-s" class="form" placeholder="Fax:">
 					</br>
 					<!--Bill To-->
 					<p></p>
 					<b style="color:#aaa;">Bill To</b>
 					<br>
-            <input type="text" id="address-B" placeholder="Address:">
-            <input type="text" id="address-state-b" placeholder="City:">
-            <input type="text" id="address-state-b" placeholder="State:" style="width: 50px;">
-            <input type="text" id="address-country-b" placeholder="Country:" style="width: 100px;">
-            <input type="text" id="address-zip-b" placeholder="ZIP:" style="width: 50px;">
+            <input type="text" id="address-B" class="form" placeholder="Address:">
+            <input type="text" id="address-city-b" class="form" placeholder="City:">
+            <input type="text" id="address-state-b" class="form" placeholder="State:" style="width: 50px;">
+            <input type="text" id="address-country-b" class="form" placeholder="Country:" style="width: 100px;">
+            <input type="text" id="address-zip-b" class="form" placeholder="ZIP:" style="width: 50px;">
 					</br>
 					<p></p>
 					<b style="color:#aaa;">Billing Contact Information</b>
 					<br>
-            <input type="text" id="name-b" placeholder="Contact:">
-            <input type="text" id="title-b" placeholder="Title:">
-            <input type="text" id="department-b" placeholder="Dept:">
-            <input type="text" id="email-b" placeholder="Email:">
-            <input type="text" id="phone-bo" placeholder="Ph. Office:">
-            <input type="text" id="phone-bm" placeholder="Ph. Mobile:">
-            <input type="text" id="phone-bd" placeholder="Ph. Dept:">
-            <input type="text" id="fax-b" placeholder="Fax:">
+            <input type="text" id="name-b" class="form" placeholder="Contact:">
+            <input type="text" id="title-b" class="form" placeholder="Title:">
+            <input type="text" id="department-b" class="form" placeholder="Dept:">
+            <input type="text" id="email-b" class="form" placeholder="Email:">
+            <input type="text" id="phone-bo" class="form" placeholder="Ph. Office:">
+            <input type="text" id="phone-bm" class="form" placeholder="Ph. Mobile:">
+            <input type="text" id="phone-bd" class="form" placeholder="Ph. Dept:">
+            <input type="text" id="fax-b" class="form" placeholder="Fax:">
 					</br>
 					<br>
 					<p></p>
 				</div>
 				<input type="text" id="tabInpt" name="tabInpt" value="" onchange="setText(this.value)" style="width:485px">
-				<button id="submit" onclick="setText(tabInpt.value)">Update</button>
-				<button type="button" id="newCol" onClick="addCol(0)"> New Column</button>
-				<button type="button" id="newRow" onClick="addRow()"> New Row</button>
+
+        <div id='submit-container'>
+          <button id="new-customer">New Customer</button>
+        </div>
 
 				<canvas id="canvas" onresize="resize()" style="border:3px ridge lightgrey;"></canvas>
 			</div>
 		</div>
 
-    <!-- <script type="text/javavscript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script> -->
-    <script type="text/javascript" src="../js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <script type="text/javascript" src="../js/refactored.js"></script>
   </body>
 
   <footer id="footer">
