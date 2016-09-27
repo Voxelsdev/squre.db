@@ -1,21 +1,13 @@
-html{
+html {
 	font-family: 'Open Sans', sans-serif;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 }
-body{
+body {
 	margin:0px;
 }
-canvas{
-	position: relative;
-	background-color:#fff;
-	width: 950px;
-	height: 400px;
-	display:block;
-	text-align:center;
-	margin-top: 20px;
-}
-button{
+
+button {
 	text-align:center;
 	display:inline-block;
 	width:100px;
@@ -23,7 +15,7 @@ button{
 	border-radius: 5px;
 	background-color: #f1f3f3;
 }
-input{
+input {
 	display:inline-block;
 	width:225px;
 	height: 30px;
@@ -44,6 +36,12 @@ span {
 	display: none;
 }
 
+.modal-trigger {
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+}
+
 #new-customer {
 	width: 100%;
 	height: 100%;
@@ -51,7 +49,9 @@ span {
 #footer{
 	background-color:#ddd;
 }
+
 #header {
+	position: relative;
 	font-size: 44px;
 	/**font-family:'';**/
 	background-color: #fcfcfd;
@@ -59,6 +59,7 @@ span {
 	border-bottom: 5px ridge lightgrey;
 	height:110px;
 }
+
 #search {
 	background-color: #e3e3e7;
 	float:left;
@@ -69,13 +70,12 @@ span {
 	margin-right:-5px;
 	border-bottom: 5px ridge lightgrey;
 }
+
 #searchterm. {
 	-webkit-touch-callout: text;
 	-webkit-user-select: text;
 }
-#searchresults {
-	width:200px;
-}
+
 
 #container {
 	width: 100%;
@@ -90,23 +90,4 @@ span {
 	margin:0px;
 	border-bottom: 5px ridge lightgrey;
 	border-left: 5px ridge lightgrey;
-}
-#dragbar{
-   background-color:black;
-   height:100%;
-   float: left;
-   width: 3px;
-   cursor: col-resize;
-}
-#tableLabels{
-	line-height:1.45;
-	display:block;
-	float:left;
-	width:80px;
-}
-#tableInput{
-	display:block;
-	float:left;
-	color:#000;
-	width:950px;
 }

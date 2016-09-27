@@ -10,14 +10,16 @@
   </head>
   <body>
 
-    <div id="header">
-  		<span>
-  			<img src="../styling/assets/logo_sml.png" alt="logo_sml.png">
-  			<p><b>D</b>ATABASE&nbsp;<b>P</b>ROJECT</p>
-  		</span>
-  		<p>Title is subject to change</p>
-  	</div>
-    <div id="container">
+    <div id="container" class="row">
+
+      <div id="header">
+    		<span>
+    			<img src="../styling/assets/logo_sml.png" alt="logo_sml.png">
+    			<p><b>D</b>ATABASE&nbsp;<b>P</b>ROJECT</p>
+    		</span>
+    		<p>Title is subject to change</p>
+    	</div>
+
       <div id="search" class="main">
         <div style="width:200px">
   				<form style="margin:20px">
@@ -26,6 +28,7 @@
             <input type='text' id="searchterm" placeholder="Search:" style="width:200px;">
   					<button id="submit" onclick="search()">Submit</button>
   				</form>
+
   				<div style="margin:20px">
   					<button id="result0">Result 1</button>
   					<button id="result1">Result 2</button>
@@ -49,6 +52,7 @@
   					<button id="result19">Result 20</button>
   					<!-- <button id="next" onclick="displayInfo()">Next Page</button> -->
   				</div>
+
   			</div>
   		</div>
 
@@ -252,8 +256,8 @@
     			</div>
     		</div>
       </div>
-    </div>
 
+    </div>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
     <script type="text/javascript" src="../js/refactored.js"></script>
