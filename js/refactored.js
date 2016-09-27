@@ -39,7 +39,7 @@ function Customer() {
     bPhoneM: null,
     bPhoneD: null,
     bfax: null
-  }
+  },
   this.productInfo = {
     state: null
   }
@@ -156,7 +156,7 @@ function makeModals() {
       const $checkCol = $(`<div class="col s3">`);
       const $checkAnswer = $(`<a class="modal-action modal-close waves-effect waves-light btn blue-grey darken-1">\u2705</a>`);
       const $modalContainer = $(`<div class="modal-button-container">`);
-      const $modalActivator = $(`<a class="modal-trigger waves-effect waves-light btn col${j}" href="#divArt${currentIDM}">${mainData[currentID].productInfo.state}</a>`);
+      const $modalActivator = $(`<a class="modal-trigger waves-effect waves-light btn col${j}" href="#divArt${currentIDM}">${currentIDM}</a>`);
       const $modalType = $(`<div id="divArt${currentIDM}" class="modal modal-fixed-footer">`);
       const $modalContent = $(`<div class="modal-content">`);
       const $articleQuestion = $(`<p class="article-question" id="row${i}col${j}">Loading...</p>`);
@@ -177,6 +177,26 @@ function makeModals() {
     $('#squares-container').append($row);
   }
 }
+
+$('#contact-toggle').on('change', () => {
+  $('.contact').toggleClass('hidden');
+});
+
+$('#shipto-toggle').on('change', () => {
+  $('.shipto').toggleClass('hidden');
+});
+
+$('#shipcontact-toggle').on('change', () => {
+  $('.shipcontact').toggleClass('hidden');
+});
+
+$('#billto-toggle').on('change', () => {
+  $('.billto').toggleClass('hidden');
+});
+
+$('#billcontact-toggle').on('change', () => {
+  $('.billcontact').toggleClass('hidden');
+});
 
 (function init() {
   loadInfo();
