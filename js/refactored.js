@@ -226,7 +226,9 @@ function companySearch(str) {
   mainData.filter((e) => {
     return e.generalInfo.company.indexOf(str) > -1;
   }).forEach((e, i) => {
-    $(`#result${i}`).text(e.generalInfo.company);
+    const $result = $(`results${i}`);
+    $result.text(e.generalInfo.cName);
+    $result.siblings().text(e.id);
   });
 }
 
@@ -234,7 +236,9 @@ function peopleSearch(str) {
   mainData.filter((e) => {
     return e.generalInfo.cName.indexOf(str) > -1;
   }).forEach((e, i) => {
-    $(`#result${i}`).text(e.generalInfo.cName);
+    const $result = $(`results${i}`);
+    $result.text(e.generalInfo.cName);
+    $result.siblings().text(e.id);
   });
 }
 
@@ -246,16 +250,19 @@ function productSearch(term, interest) {
       }
     }
   }).forEach((e, i) => {
-    $(`#result${i}`).text(e.generalInfo.cName);
+    const $result = $(`results${i}`);
+    $result.text(e.generalInfo.cName);
+    $result.siblings().text(e.id);
   });
 }
 
-function getMainData() {
+function getMainData(callback) {
   const xhr = new XMLHttpRequest();
 
   xhr.onreadystatechange = function() {
     if(xhr.readyState === 4 && xhr.status === 200) {
       mainData = this.responseText;
+      callback();
     }
   }
 
@@ -265,8 +272,17 @@ function getMainData() {
 
 function saveCustomer() {
   const xhr = new XMLHttpRequest();
+
   xhr.open('POST', `http://localhost:8000/clients/${currentID}`);
   xhr.send(JSON.stringify(mainData[currentID]));
+}
+
+function updateCustomer(id) {
+  const customer = mainData[id];
+  const xhr = new XMLHttpRequest();
+
+  xhr.open('PUT', `http://localhost:8000/clients/${id}`);
+  xhr.send(JSON.stringify(customer));
 }
 
 function addInfo() {
@@ -363,7 +379,7 @@ function makeModals() {
   }
 }
 
-function makeResults(){
+function makeResults() {
   for (let i = 1; i <= 20; i++) {
     const $container = $('<div></div>');
     const $button = $(`<button id="result${i}">result${i}</div>`);
@@ -396,12 +412,13 @@ $('#billcontact-toggle').on('change', () => {
 });
 
 $('#results-container').on('click', (e) => {
-  const id = $(event.target).siblings().text();
+  const id = parseInt($(event.target).siblings().text());
+  displayInfo(id);
 });
 
 (function init() {
-  getMainData();
-  makeModals();
+  getMainData(makeModals);
+  makeModals(); // don't invoke this later (when the serverside is done);
   makeResults();
 })();
 
