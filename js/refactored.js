@@ -1,6 +1,7 @@
-let mainData = [] ;
+let mainData = [];
 let currentID = 0;
 // http://snpy.in/q8xEpR
+
 function Customer() {
   this.id = mainData.length,
   this.generalInfo = {
@@ -40,20 +41,216 @@ function Customer() {
     bPhoneD: null,
     bfax: null
   },
+
   this.productInfo = {
-    state: null
-  }
+    product1: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product2: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product3: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product4: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product5: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product6: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product7: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product8: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product9: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product10: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product11: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product12: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product13: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product14: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product15: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product16: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product17: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product18: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product19: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product20: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product21: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product22: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product23: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product24: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product25: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product26: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product27: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product28: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product29: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product30: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product31: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product32: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product33: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product34: {
+      note: '',
+      name: '',
+      status: -1
+    },
+    product35: {
+      note: '',
+      name: '',
+      status: -1
+    }
+  },
+  mainData.push(this)
 }
 
 function companySearch(str) {
   mainData.filter((e) => {
     return e.generalInfo.company.indexOf(str) > -1;
-  },[]).forEach((e, i) => {
+  }).forEach((e, i) => {
     $(`#result${i}`).text(e.generalInfo.company);
   });
 }
 
-function loadInfo() {
+function peopleSearch(str) {
+  mainData.filter((e) => {
+    return e.generalInfo.cName.indexOf(str) > -1;
+  }).forEach((e, i) => {
+    $(`#result${i}`).text(e.generalInfo.cName);
+  });
+}
+
+function productSearch(term, interest) {
+  mainData.filter((e) => {
+    for (var product in e.productInfo) {
+      if(product.name.indexOf(term) > -1) {
+        return product.status === interest;
+      }
+    }
+  }).forEach((e, i) => {
+    $(`#result${i}`).text(e.generalInfo.cName);
+  });
+}
+
+function getMainData() {
   const xhr = new XMLHttpRequest();
 
   xhr.onreadystatechange = function() {
@@ -61,7 +258,8 @@ function loadInfo() {
       mainData = this.responseText;
     }
   }
-  xhr.open('GET', 'http://localhost:8000/clients')
+
+  xhr.open('GET', 'http://localhost:8000/clients');
 }
 
 
@@ -74,51 +272,34 @@ function saveCustomer() {
 function addInfo() {
   currentID = mainData.length;
   new Customer();
-  const currentCustomer = mainData[currentID];
-  currentCustomer.generalInfo.company = $('#company').value;
-  currentCustomer.generalInfo.cName = $('#name-c').value;
-  currentCustomer.generalInfo.cTitle = $('#title-c').value;
-  currentCustomer.generalInfo.cDept = $('#department-c').value;
-  currentCustomer.generalInfo.cEmail = $('#email-c').value;
-  currentCustomer.generalInfo.cPhoneO = $('#phone-co').value;
-  currentCustomer.generalInfo.cPhoneM = $('#phone-cm').value;
-  currentCustomer.generalInfo.cPhoneD = $('#phone-cd').value;
-  currentCustomer.generalInfo.cFax = $('#fax-c').value;
-  currentCustomer.generalInfo.sAddr = $('#address-s').value;
-  currentCustomer.generalInfo.sCity = $('#address-city-s').value;
-  currentCustomer.generalInfo.sState = $('#address-state-s').value;
-  currentCustomer.generalInfo.sCount = $('#address-country-s').value;
-  currentCustomer.generalInfo.sZip = $('#address-zip-s').value;
-  currentCustomer.generalInfo.sName = $('#name-s').value;
-  currentCustomer.generalInfo.sTitle = $('#title-s').value;
-  currentCustomer.generalInfo.sDept = $('#department-s').value;
-  currentCustomer.generalInfo.sEmail = $('#email-s').value;
-  currentCustomer.generalInfo.sPhoneO = $('#phone-so').value;
-  currentCustomer.generalInfo.sPhoneM = $('#phone-sm').value;
-  currentCustomer.generalInfo.sPhoneD = $('#phone-sd').value;
-  currentCustomer.generalInfo.sFax = $('#fax-s').value;
-  currentCustomer.generalInfo.bAddr = $('#address-b').value;
-  currentCustomer.generalInfo.bCity = $('#address-city-b').value;
-  currentCustomer.generalInfo.bState = $('#address-state-b').value;
-  currentCustomer.generalInfo.bCount = $('#address-country-b').value;
-  currentCustomer.generalInfo.bZip = $('#address-zip-b').value;
-  currentCustomer.generalInfo.bName = $('#name-b').value;
-  currentCustomer.generalInfo.bTitle = $('#title-b').value;
-  currentCustomer.generalInfo.bDept = $('#department-b').value;
-  currentCustomer.generalInfo.bEmail = $('#email-b').value;
-  currentCustomer.generalInfo.bPhoneO = $('#phone-bo').value;
-  currentCustomer.generalInfo.bPhoneM = $('#phone-bm').value;
-  currentCustomer.generalInfo.bPhoneD = $('#phone-bd').value;
-  currentCustomer.generalInfo.bFax = $('#fax-b').value;
   const $newButton = $('<button id="new-customer">New Customer</button>');
   $sC.append($newButton);
+  $newButton.on('click', toggleNewCustomer);
   $add.remove();
   $cancel.remove();
-  // Materialize.toast('Database Updated!', 2000);
+
+  const formarr = $('.form').toArray();
+  const objarr = Object.keys(mainData[id].productInfo);
+
+  for(let i = 0; i < formarr.length; i++) {
+    mainData[currentID][objarr[i]] = formarr[i].value();
+  }
+
+  saveCustomer();
+  Materialize.toast('Database Updated!', 2000);
 }
 
-$('#new-customer').on('click', () => {
-  // saveCustomer(currentID);
+function displayInfo(id) {
+  const formarr = $('.form').toArray();
+  const objarr = Object.keys(mainData[id].productInfo);
+
+  currentID = id;
+  for (let i = 0; i < formarr.length; i++) {
+    formarr[i].value(mainData[id][objarr[i]]);
+  }
+}
+
+function toggleNewCustomer() {
   $('.form').removeAttr('value');
   $('#new-customer').remove();
   const $sC = $('#submit-container');
@@ -128,13 +309,16 @@ $('#new-customer').on('click', () => {
   $cancel.on('click', () => {
     const $newCustomer = $('<button id="new-customer">New Customer</button>');
     $sC.append($newCustomer);
+    $newCustomer.on('click', toggleNewCustomer);
     $('.form').removeAttr('value');
     $add.remove();
     $cancel.remove();
   });
   $sC.append($add);
   $sC.append($cancel);
-});
+}
+
+$('#new-customer').on('click', toggleNewCustomer);
 
 function makeModals() {
   let currentIDM = 0;
@@ -159,7 +343,8 @@ function makeModals() {
       const $modalActivator = $(`<a class="modal-trigger waves-effect waves-light btn col${j}" href="#divArt${currentIDM}">${currentIDM}</a>`);
       const $modalType = $(`<div id="divArt${currentIDM}" class="modal modal-fixed-footer">`);
       const $modalContent = $(`<div class="modal-content">`);
-      const $articleQuestion = $(`<p class="article-question" id="row${i}col${j}">Loading...</p>`);
+      const $articleQuestion = $(`<p class="article-question" id="row${i}col${j}"></p>`);
+      // Object.keys(mainData[0].productInfo)[currentIDM]
 
       $checkCol.append($checkAnswer);
       $inputCol.append($input);
@@ -175,6 +360,18 @@ function makeModals() {
       $row.append($mainCol);
     }
     $('#squares-container').append($row);
+  }
+}
+
+function makeResults(){
+  for (let i = 1; i <= 20; i++) {
+    const $container = $('<div></div>');
+    const $button = $(`<button id="result${i}">result${i}</div>`);
+    const $hidden = $('<div class="hidden"></div>')
+
+    $container.append($button);
+    $container.append($hidden);
+    $('#results-container').append($container);
   }
 }
 
@@ -198,7 +395,71 @@ $('#billcontact-toggle').on('change', () => {
   $('.billcontact').toggleClass('hidden');
 });
 
+$('#results-container').on('click', (e) => {
+  const id = $(event.target).siblings().text();
+});
+
 (function init() {
-  loadInfo();
+  getMainData();
   makeModals();
+  makeResults();
 })();
+
+/*
+  -- glass --
+  regular slides
+  charged slides
+  control box slides
+  cover slips
+
+  -- air filtration systems --
+  air filtration system
+  air filtration system replacement filter
+  new air filtration system
+  new air filtration system / bulb
+  new air filtration system / bulb repl filter
+  pure ayre
+
+  -- recycling systems --
+  alchohol recycling systems
+  1 gal acs
+  benchtop
+  3 gal
+  30 gal
+  55 gal
+  other
+
+  -- formalin recycling systems --
+  1 gal
+  BenchTop rs
+  3 gal
+  30 gal
+  55 gal
+  other
+
+  -- xylene recycling pads --
+
+  -- Histo cool --
+  red histo/cool
+  blue histo/cool
+
+  -- tri/path chambers --
+
+  -- staining reagents --
+  eosin
+  hematoxlyn
+  blueing
+  clearview
+
+  -- slide printers --
+
+  -- cassette printers --
+
+  -- solvents --
+  alchohol
+  formalin
+  xylene
+
+  -- formalin prefil vials --
+
+*/
