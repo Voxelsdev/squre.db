@@ -84,6 +84,7 @@ span {
 
 #info {
 	background-color: #efeff2;
+	overflow: scroll;
 	float:right;
 	width:80%;
 	height: 100%;

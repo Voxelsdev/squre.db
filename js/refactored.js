@@ -1,6 +1,5 @@
 let mainData = [];
 let currentID = 0;
-// http://snpy.in/q8xEpR
 
 function Customer() {
   this.id = mainData.length,
@@ -285,57 +284,6 @@ function updateCustomer(id) {
   xhr.send(JSON.stringify(customer));
 }
 
-function addInfo() {
-  currentID = mainData.length;
-  new Customer();
-  const $newButton = $('<button id="new-customer">New Customer</button>');
-  $sC.append($newButton);
-  $newButton.on('click', toggleNewCustomer);
-  $add.remove();
-  $cancel.remove();
-
-  const formarr = $('.form').toArray();
-  const objarr = Object.keys(mainData[id].productInfo);
-
-  for(let i = 0; i < formarr.length; i++) {
-    mainData[currentID][objarr[i]] = formarr[i].value();
-  }
-
-  saveCustomer();
-  Materialize.toast('Database Updated!', 2000);
-}
-
-function displayInfo(id) {
-  const formarr = $('.form').toArray();
-  const objarr = Object.keys(mainData[id].productInfo);
-
-  currentID = id;
-  for (let i = 0; i < formarr.length; i++) {
-    formarr[i].value(mainData[id][objarr[i]]);
-  }
-}
-
-function toggleNewCustomer() {
-  $('.form').removeAttr('value');
-  $('#new-customer').remove();
-  const $sC = $('#submit-container');
-  const $add = $('<button>Add</button>');
-  const $cancel = $('<button>Cancel</button>');
-  $add.on('click', addInfo);
-  $cancel.on('click', () => {
-    const $newCustomer = $('<button id="new-customer">New Customer</button>');
-    $sC.append($newCustomer);
-    $newCustomer.on('click', toggleNewCustomer);
-    $('.form').removeAttr('value');
-    $add.remove();
-    $cancel.remove();
-  });
-  $sC.append($add);
-  $sC.append($cancel);
-}
-
-$('#new-customer').on('click', toggleNewCustomer);
-
 function makeModals() {
   let currentIDM = 0;
 
@@ -390,6 +338,100 @@ function makeResults() {
     $('#results-container').append($container);
   }
 }
+
+function addInfo() {
+  const $newButton = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="new-customer">New Customer</a>');
+  const $editButton = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="edit-customer">Edit Customer</a>');
+
+  $('#submit-container').append($newButton);
+  $('#edit-container').append($editButton);
+  $editButton.on('clikc', toggleEditCustomer);
+  $newButton.on('click', toggleNewCustomer);
+  $('#add').remove();
+  $('#cancel').remove();
+
+  currentID = mainData.length;
+  new Customer();
+
+  const objarr = Object.keys(mainData[currentID].generalInfo);
+  const formarr = $('.form').toArray();
+
+  for(let i = 0; i < formarr.length; i++) {
+    mainData[currentID][objarr[i]] = formarr[i].value;
+  }
+
+  console.log(mainData[currentID]);
+  saveCustomer();
+  Materialize.toast('Database Updated!', 2000);
+}
+
+function displayInfo(id) {
+  const formarr = $('.form').toArray();
+  const objarr = Object.keys(mainData[id].productInfo);
+
+  currentID = id;
+  for (let i = 0; i < formarr.length; i++) {
+    formarr[i].value(mainData[id][objarr[i]]);
+  }
+}
+
+function updateInfo(){
+
+}
+
+function toggleNewCustomer() {
+  const $sC = $('#submit-container');
+  const $eC = $('#edit-container');
+  const $add = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="add">Add</a>');
+  const $cancel = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="cancel">Cancel</a>');
+
+  $('.form').removeAttr('value');
+  $('#new-customer').remove();
+  $('#edit-customer').remove();
+  $add.on('click', addInfo);
+  $cancel.on('click', () => {
+    const $newCustomer = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="new-customer">New Customer</a>');
+    const $editCustomer = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="edit-customer">Edit Customer</a>');
+
+    $sC.append($newCustomer);
+    $eC.append($editCustomer);
+    $newCustomer.on('click', toggleNewCustomer);
+    $editCustomer.on('click', toggleEditCustomer);
+    $('.form').removeAttr('value');
+    $add.remove();
+    $cancel.remove();
+  });
+  $sC.append($add);
+  $eC.append($cancel);
+}
+
+function toggleEditCustomer() {
+  const $sC = $('#submit-container');
+  const $eC = $('#edit-container');
+  const $save = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1">Save</a>');
+  const $cancel = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1">Cancel</a>');
+
+  $('#new-customer').remove();
+  $('#edit-customer').remove();
+  $save.on('click', updateInfo);
+  $cancel.on('click', () => {
+    const $newCustomer = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="new-customer">New Customer</a>');
+    const $editCustomer = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="edit-customer">Edit Customer</a>');
+
+    $sC.append($newCustomer);
+    $eC.append($editCustomer);
+    $newCustomer.on('click', toggleNewCustomer);
+    $editCustomer.on('click', toggleEditCustomer);
+    $('.form').removeAttr('value');
+    $save.remove();
+    $cancel.remove();
+  });
+  $sC.append($save);
+  $eC.append($cancel);
+}
+
+$('#new-customer').on('click', toggleNewCustomer);
+$('#edit-customer').on('click', toggleEditCustomer);
 
 $('#contact-toggle').on('change', () => {
   $('.contact').toggleClass('hidden');

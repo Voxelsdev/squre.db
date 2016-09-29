@@ -14,7 +14,7 @@
       <div id="header">
     		<span>
     			<img src="../styling/assets/logo_sml.png" alt="logo_sml.png">
-    			<p><b>D</b>ATABASE&nbsp;<b>P</b>ROJECT</p>
+    			<!-- <p><b>D</b>ATABASE&nbsp;<b>P</b>ROJECT</p> -->
     		</span>
     		<p>Title is subject to change</p>
     	</div>
@@ -40,17 +40,18 @@
     				<div id="tableInput">
     					<div class="row" id='input-container'>
                 <input type="text" id="company" class="form" placeholder="Customer" style="width:350px;height:50px;font-size:26px;font-weight:700;">
-
                 <div class="row">
                   <div class="row">
-      					    <b style="color:#aaa;">Contact Information</b>
-                    <div class="col s1">
+                    <div class="col s1 offset-s4">
                       <div class="switch">
                         <label>
                           <input type="checkbox" id="contact-toggle">
                           <span class="lever"></span>
                         </label>
                       </div>
+                    </div>
+                    <div class="col s3">
+                      <b style="color:#aaa;">Contact Information</b>
                     </div>
                   </div>
                   <div class="row contact hidden">
@@ -84,14 +85,16 @@
                   </div>
 
                 <div class="row">
-        				  <b style="color:#aaa;">Shipping Address</b>
-                  <div class="col s1">
+                  <div class="col s1 offset-s4">
                     <div class="switch">
                       <label>
                         <input type="checkbox" id="shipto-toggle">
                         <span class="lever"></span>
                       </label>
                     </div>
+                  </div>
+                  <div class="col s3">
+                    <b style="color:#aaa;">Shipping Address</b>
                   </div>
                 </div>
                 <div class="row shipto hidden">
@@ -113,14 +116,16 @@
                 </div>
 
                 <div class="row">
-      					  <b style="color:#aaa;">Shipping Contact Information</b>
-                  <div class="col s1">
+                  <div class="col s1 offset-s4">
                     <div class="switch">
                       <label>
                         <input type="checkbox" id="shipcontact-toggle">
                         <span class="lever"></span>
                       </label>
                     </div>
+                  </div>
+                  <div class="col s3">
+                    <b style="color:#aaa;">Shipping Contact Information</b>
                   </div>
                 </div>
                 <div class="row shipcontact hidden">
@@ -153,14 +158,16 @@
                 </div>
 
                 <div class="row">
-      					  <b style="color:#aaa;">Billing Address</b>
-                  <div class="col s1">
+                  <div class="col s1 offset-s4">
                     <div class="switch">
                       <label>
                         <input type="checkbox" id="billto-toggle">
                         <span class="lever"></span>
                       </label>
                     </div>
+                  </div>
+                  <div class="col s3">
+                    <b style="color:#aaa;">Billing Address</b>
                   </div>
                 </div>
                 <div class="row billto hidden">
@@ -182,14 +189,16 @@
                 </div>
 
                 <div class="row">
-      					  <b style="color:#aaa;">Billing Contact Information</b>
-                  <div class="col s1">
+                  <div class="col s1 offset-s4">
                     <div class="switch">
                       <label>
                         <input type="checkbox" id="billcontact-toggle">
                         <span class="lever"></span>
                       </label>
                     </div>
+                  </div>
+                  <div class="col s3">
+                    <b style="color:#aaa;">Billing Contact Information</b>
                   </div>
                 </div>
                 <div class="row billcontact hidden">
@@ -222,10 +231,12 @@
                 </div>
               </div>
     				</div>
-    				<!-- <input type="text" id="tabInpt" name="tabInpt" value="" onchange="setText(this.value)" style="width:485px"> -->
             <div class="row">
-              <div class="col s4" id='submit-container'>
-                <button id="new-customer">New Customer</button>
+              <div class="col s3" id='submit-container'>
+                <a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="new-customer">New Customer</a>
+              </div>
+              <div class="col s3" id='edit-container'>
+                <a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="edit-customer">Edit Customer</a>
               </div>
             </div>
 
@@ -242,7 +253,7 @@
     <script type="text/javascript" src="../js/refactored.js"></script>
   </body>
 
-  <!-- <footer id="footer">
+  <footer id="footer">
 		&copy; 2016, Ben Chan &amp; Tyler Miller
-	</footer> -->
+	</footer>
 </html>
