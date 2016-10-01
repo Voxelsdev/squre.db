@@ -300,22 +300,22 @@ function makeModals() {
       const $modalFooter = $(`<div class="modal-footer">`);
       const $modalFooterRow = $(`<div class="row">`);
       const $inputCol = $(`<div class="col s3 offset-s1">`);
-      const $input = $(`<input type="text" class="answer-submit" placeholder="Add a note here" autofocus>`);
+      const $input = $(`<input type="text" class="note-enter" placeholder="Note:" autofocus>`);
       const $checkCol = $(`<div class="col s3">`);
-      const $checkAnswer = $(`<a class="modal-action modal-close waves-effect waves-light btn blue-grey darken-1">\u2705</a>`);
+      const $saveproduct = $(`<a class="modal-action modal-close waves-effect waves-light btn blue-grey darken-1">Save State</a>`);
       const $modalContainer = $(`<div class="modal-button-container">`);
-      const $modalActivator = $(`<a class="modal-trigger waves-effect waves-light btn col${j}" href="#divArt${currentIDM}">${currentIDM}</a>`);
-      const $modalType = $(`<div id="divArt${currentIDM}" class="modal modal-fixed-footer">`);
+      const $modalActivator = $(`<a class="modal-trigger waves-effect waves-light btn col${j}" href="#linkid${currentIDM}">${i * 200}</a>`);
+      const $modalType = $(`<div id="linkid${currentIDM}" class="modal modal-fixed-footer">`);
       const $modalContent = $(`<div class="modal-content">`);
-      const $articleQuestion = $(`<p class="article-question" id="row${i}col${j}"></p>`);
-      // Object.keys(mainData[0].productInfo)[currentIDM]
+      const $productNote = $(`<p class="product-note" id="row${i}col${j}"></p>`);
+      // Object.keys(mainData[currentID].productInfo)[currentIDM]
 
-      $checkCol.append($checkAnswer);
+      $checkCol.append($saveproduct);
       $inputCol.append($input);
       $modalFooterRow.append($inputCol);
       $modalFooterRow.append($checkCol);
       $modalFooter.append($modalFooterRow);
-      $modalContent.append($articleQuestion);
+      $modalContent.append($productNote);
       $modalType.append($modalContent);
       $modalType.append($modalFooter);
       $modalContainer.append($modalActivator);
@@ -330,7 +330,7 @@ function makeModals() {
 function makeResults() {
   for (let i = 1; i <= 20; i++) {
     const $container = $('<div></div>');
-    const $button = $(`<button id="result${i}">result${i}</div>`);
+    const $button = $(`<button id="result${i}" class="results">result${i}</div>`);
     const $hidden = $('<div class="hidden"></div>')
 
     $container.append($button);
@@ -345,10 +345,11 @@ function addInfo() {
 
   $('#submit-container').append($newButton);
   $('#edit-container').append($editButton);
-  $editButton.on('clikc', toggleEditCustomer);
-  $newButton.on('click', toggleNewCustomer);
   $('#add').remove();
   $('#cancel').remove();
+
+  $editButton.on('click', toggleEditCustomer);
+  $newButton.on('click', toggleNewCustomer);
 
   currentID = mainData.length;
   new Customer();
@@ -376,7 +377,27 @@ function displayInfo(id) {
 }
 
 function updateInfo(){
+  const $newButton = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="new-customer">New Customer</a>');
+  const $editButton = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="edit-customer">Edit Customer</a>');
 
+  $('#submit-container').append($newButton);
+  $('#edit-container').append($editButton);
+
+  $editButton.on('click', toggleEditCustomer);
+  $newButton.on('click', toggleNewCustomer);
+
+  $('#save').remove();
+  $('#cancel').remove();
+
+  const objarr = Object.keys(mainData[currentID].generalInfo);
+  const formarr = $('.form').toArray();
+
+  for(let i = 0; i < formarr.length; i++) {
+    mainData[currentID][objarr[i]] = formarr[i].value;
+  }
+
+  saveCustomer();
+  Materialize.toast('Database Updated!', 2000);
 }
 
 function toggleNewCustomer() {
@@ -388,6 +409,7 @@ function toggleNewCustomer() {
   $('.form').removeAttr('value');
   $('#new-customer').remove();
   $('#edit-customer').remove();
+
   $add.on('click', addInfo);
   $cancel.on('click', () => {
     const $newCustomer = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="new-customer">New Customer</a>');
@@ -395,12 +417,16 @@ function toggleNewCustomer() {
 
     $sC.append($newCustomer);
     $eC.append($editCustomer);
+
     $newCustomer.on('click', toggleNewCustomer);
     $editCustomer.on('click', toggleEditCustomer);
+
     $('.form').removeAttr('value');
+
     $add.remove();
     $cancel.remove();
   });
+
   $sC.append($add);
   $eC.append($cancel);
 }
@@ -408,11 +434,12 @@ function toggleNewCustomer() {
 function toggleEditCustomer() {
   const $sC = $('#submit-container');
   const $eC = $('#edit-container');
-  const $save = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1">Save</a>');
-  const $cancel = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1">Cancel</a>');
+  const $save = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="save">Save</a>');
+  const $cancel = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="cancel">Cancel</a>');
 
   $('#new-customer').remove();
   $('#edit-customer').remove();
+
   $save.on('click', updateInfo);
   $cancel.on('click', () => {
     const $newCustomer = $('<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="new-customer">New Customer</a>');
@@ -426,6 +453,7 @@ function toggleEditCustomer() {
     $save.remove();
     $cancel.remove();
   });
+
   $sC.append($save);
   $eC.append($cancel);
 }
@@ -452,6 +480,8 @@ $('#billto-toggle').on('change', () => {
 $('#billcontact-toggle').on('change', () => {
   $('.billcontact').toggleClass('hidden');
 });
+
+$('.modal-trigger').leanModal();
 
 $('#results-container').on('click', (e) => {
   const id = parseInt($(event.target).siblings().text());
