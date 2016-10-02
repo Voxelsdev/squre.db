@@ -255,6 +255,16 @@ function productSearch(term, interest) {
   });
 }
 
+function runSearch(){
+  if ($('#co-search').val()) {
+    companySearch($('#searchterm').val());
+  } else if ($('#pe-search').val()) {
+    peopleSearch($('#searchterm').val());
+  } else {
+    productSearch($('#product').val(), $('#interest').val());
+  }
+}
+
 function getMainData(callback) {
   const xhr = new XMLHttpRequest();
 
@@ -272,7 +282,7 @@ function getMainData(callback) {
 function saveCustomer() {
   const xhr = new XMLHttpRequest();
 
-  xhr.open('POST', `http://localhost:8000/clients/${currentID}`);
+  xhr.open('POST', `http://localhost:8000/clients`);
   xhr.send(JSON.stringify(mainData[currentID]));
 }
 
@@ -458,6 +468,24 @@ function toggleEditCustomer() {
   $eC.append($cancel);
 }
 
+function toNormSearch() {
+  if (lastSearch === 1) {
+    $('#search1').append($('<input type="text" id="searchterm" placeholder="Search:">'));
+    $('#product').remove();
+    $('#interest').remove();
+    lastSearch = 0;
+  }
+}
+
+function toProdSearch() {
+  if (lastSearch === 0) {
+    $('#searchterm').remove();
+    $('#search1').append($('<input type="text" id="product" placeholder="product">'));
+    $('#search2').append($('<input type="text" id="interest" placeholder="interest">'));
+    lastSearch = 1;
+  }
+}
+
 $('#new-customer').on('click', toggleNewCustomer);
 $('#edit-customer').on('click', toggleEditCustomer);
 
@@ -482,6 +510,13 @@ $('#billcontact-toggle').on('change', () => {
 });
 
 $('.modal-trigger').leanModal();
+
+$('#searchterm').on('change', runSearch);
+
+$('#co-search').on('click', toNormSearch);
+$('#pe-search').on('click', toNormSearch);
+
+$('#pr-search').on('click', toProdSearch);
 
 $('#results-container').on('click', (e) => {
   const id = parseInt($(event.target).siblings().text());

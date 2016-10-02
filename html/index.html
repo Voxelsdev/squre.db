@@ -19,21 +19,29 @@
     		<p>Title is subject to change</p>
     	</div>
 
-      <div id="search" class="main">
-        <div style="width:200px">
-  				<form style="margin:20px">
-  					 <b style="color:#666;font-weight:600;">Search:</b>
-  					<br>
-            <input type='text' id="searchterm" placeholder="Search:" style="width:200px;">
-  					<button id="submit" onclick="search()">Submit</button>
-  				</form>
+      <div id="search" class="main row">
+        <div id="search-container" class="row">
+          <div class="row">
+            <b style="color:#666;font-weight:600;">Search:</b>
+          </div>
 
-  				<div style="margin:20px" class="results" id="results-container">
+          <div class="row">
+            <div class="col s6" id="search1">
+              <input type='text' id="searchterm" placeholder="Search:">
+            </div>
+
+            <div class="col s6" id='search2'>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div style="margin:20px" class="results" id="results-container">
 
   				</div>
-
-  			</div>
-  		</div>
+        </div>
+      </div>
 
     		<div id="info">
     			<div id="table" class="main" style="margin:20px">
