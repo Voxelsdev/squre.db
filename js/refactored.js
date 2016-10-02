@@ -1,5 +1,6 @@
 let mainData = [];
 let currentID = 0;
+const lastSearch = 1;
 
 function Customer() {
   this.id = mainData.length,
@@ -473,7 +474,7 @@ function toNormSearch() {
     $('#search1').append($('<input type="text" id="searchterm" placeholder="Search:">'));
     $('#product').remove();
     $('#interest').remove();
-    lastSearch = 0;
+    lastSearch--;
   }
 }
 
@@ -482,7 +483,7 @@ function toProdSearch() {
     $('#searchterm').remove();
     $('#search1').append($('<input type="text" id="product" placeholder="product">'));
     $('#search2').append($('<input type="text" id="interest" placeholder="interest">'));
-    lastSearch = 1;
+    lastSearch++;
   }
 }
 

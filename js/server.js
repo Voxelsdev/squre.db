@@ -1,12 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 const dataPath = path.join(__dirname, 'data.json');
-const experess = require('express');
+const express = require('express');
 const app = express();
 const port = process.env.PORT || 8000;
 
 const morgan = require('morgan');
-const bodyParse = require('body-parser');
+const bodyParser = require('body-parser');
 
 function createValidObject(req) {
   const out = {};
@@ -227,16 +227,20 @@ function createValidObject(req) {
   }
   return obj;
 }
+
 app.disable('x-powered-by');
 
+app.use('/clients', express.static('index.html'));
+
 app.get('/clients', (req, res) => {
-  fs.readFile(dataPath, 'utf8', (readErr, data) => {
+  fs.readFile(dataPath, 'utf8', (readErr, customers) => {
     if (readErr) {
       console.error(readErr.stack);
       return res.sendStatus(500);
     }
 
-    res.send(JSON.parse(data));
+    const mainData = JSON.parse(customers);
+    res.send(mainData);
   });
 });
 
@@ -285,6 +289,14 @@ app.put('/clients/:id', (req, res) => {
       res.sendStatus(400);
     }
   });
+});
+
+app.use((req, res) => {
+  res.sendStatus(404);
+})
+
+app.listen(port,() => {
+  console.log(`Listening on port ${port}`);
 });
 
 /*
