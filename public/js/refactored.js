@@ -533,7 +533,14 @@ $('#results-container').on('click', (e) => {
 (function init() {
   getMainData(makeModals);
   makeModals(); // don't invoke this later (when the serverside is done);
-  $('.modal-trigger').leanModal();
+  $('.modal-trigger').leanModal({
+      dismissible: true,
+      in_duration: 300,
+      out_duration: 200,
+      starting_top: '4%',
+      ending_top: '10%'
+    }
+  );
   makeResults();
 })();
 
