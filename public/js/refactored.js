@@ -267,24 +267,26 @@ function runSearch(){
 }
 
 function getMainData(callback) {
-  const xhr = new XMLHttpRequest();
-
-  xhr.onreadystatechange = function() {
-    if(xhr.readyState === 4 && xhr.status === 200) {
-      mainData = this.responseText;
+  $.ajax({
+    url: 'http://localhost:8000/clients',
+    type: 'GET',
+    success: (res) => {
+      mainData = res;
       callback();
     }
-  }
-
-  xhr.open('GET', 'http://localhost:8000/clients');
+  })
 }
 
 
 function saveCustomer() {
-  const xhr = new XMLHttpRequest();
-
-  xhr.open('POST', `http://localhost:8000/clients`);
-  xhr.send(JSON.stringify(mainData[currentID]));
+  $.ajax({
+    url: 'http://localhost:8000/clients',
+    type: 'POST',
+    data: JSON.stringify(mainData[currentID]),
+    success: () => {
+      Materialize.toast('Database Updated!', 2000);
+    }
+  })
 }
 
 function updateCustomer(id) {
@@ -293,6 +295,7 @@ function updateCustomer(id) {
 
   xhr.open('PUT', `http://localhost:8000/clients/${id}`);
   xhr.send(JSON.stringify(customer));
+  Materialize.toast('Database Updated!', 2000);
 }
 
 function makeModals() {
@@ -308,21 +311,40 @@ function makeModals() {
       } else {
         var $mainCol = $(`<div class="col s1">`);
       }
+      const productName = mainData[currentID]['productInfo']['product' + currentIDM]['name'];
+      const productNote = mainData[currentID]['productInfo']['product' + currentIDM]['note'];
+      const productStat = mainData[currentID]['productInfo']['product' + currentIDM]['status'];
+      let productTest = '';
+      let bgColor = '';
+
+      if (productStat < 0) {
+        productText = 'N';
+        bgColor = '#ef9a9a red lighten-3';
+      } else if (productStat < 1) {
+        productText = 'I';
+        bgColor = '#fff9c4 yellow lighten-4';
+      } else {
+        productText = 'B';
+        bgColor = '#c8e6c9 green lighten-4';
+      }
+
       const $modalFooter = $(`<div class="modal-footer">`);
       const $modalFooterRow = $(`<div class="row">`);
       const $inputCol = $(`<div class="col s9">`);
       const $input = $(`<input type="text" class="note-enter" placeholder="Note:" autofocus>`);
       const $titleRow = $('<div class="row">');
       const $titleCol = $('<div class="col s11 offset-s1">');
-      const $titleBox = $(`<p id="product${currentIDM}">yo</p>`);
+      const $titleBox = $(`<p id="product${currentIDM}">${productName}</p>`);
       const $saveCol = $(`<div class="col s3">`);
-      const $saveproduct = $(`<a class="modal-action modal-close waves-effect waves-light btn blue-grey darken-1">Add Note</a>`);
+      const $saveproduct = $(`<a class="modal-action modal-close waves-effect waves-light btn blue-grey darken-1" id="product-content${currentIDM}">Add Note</a>`);
       const $modalContainer = $(`<div class="modal-button-container">`);
-      const $modalActivator = $(`<a class="modal-trigger waves-effect waves-light btn col${j}" href="#linkid${currentIDM}">${i * 200}</a>`);
+
+      const $modalActivator = $(`<a class="modal-trigger waves-effect waves-light btn ${bgColor}" href="#linkid${currentIDM}" id="activator${currentIDM}">${productText}</a>`);
+
       const $modalType = $(`<div id="linkid${currentIDM}" class="modal modal-fixed-footer">`);
+
       const $modalContent = $(`<div class="modal-content">`);
-      const $productNote = $(`<p class="product-note" id="row${i}col${j}"></p>`);
-      // ${Object.keys(mainData[currentID].productInfo)[currentIDM].name}
+      const $productNote = $(`<p class="product-note" id="product-note${currentIDM}">${productNote}</p>`);
 
       $titleCol.append($titleBox);
       $titleRow.append($titleCol);
@@ -342,12 +364,20 @@ function makeModals() {
     }
     $('#squares-container').append($row);
   }
+  $('.modal-trigger').leanModal({
+    dismissible: true,
+    in_duration: 300,
+    out_duration: 200,
+    starting_top: '4%',
+    ending_top: '10%'
+  });
+  $('.modal-close').on('click', updateInfo);
 }
 
 function makeResults() {
   for (let i = 1; i <= 20; i++) {
     const $container = $('<div></div>');
-    const $button = $(`<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="result${i}" style="margin-bottom: 10px">Result ${i}</a>`)
+    const $button = $(`<a class="waves-effect waves-light btn #bdbdbd grey lighten-1" id="result${i}" style="margin-bottom: 10px">Result ${i}</a>`);
     const $hidden = $('<div class="hidden"></div>')
 
     $container.append($button);
@@ -378,9 +408,11 @@ function addInfo() {
     mainData[currentID][objarr[i]] = formarr[i].value;
   }
 
-  console.log(mainData[currentID]);
+  // WORK ON THIS, FIX THE NOTES
+  for(let i = 1; i <= 35; i++) {
+    mainData[currentID]['productInfo']['product' + i]['note'] = $(`#product-note${i}`).text();
+  }
   saveCustomer();
-  Materialize.toast('Database Updated!', 2000);
 }
 
 function displayInfo(id) {
@@ -390,6 +422,43 @@ function displayInfo(id) {
   currentID = id;
   for (let i = 0; i < formarr.length; i++) {
     formarr[i].value(mainData[id][objarr[i]]);
+  }
+
+  for (let i = 1; i < 35; i++) {
+    const dat = mainData[id]['productInfo']['product' + i];
+    const productStat = dat['status'];
+    const $activator = $(`#activator${i}`);
+    let productText = '';
+    let bgColor = '';
+
+    $(`#product-content${i}`).text(dat['note']);
+
+    if (productStat < 0) {
+      productText = 'N';
+      bgColor = '#ef9a9a red lighten-3';
+    } else if (productStat < 1) {
+      productText = 'I';
+      bgColor = '#fff9c4 yellow lighten-4';
+    } else {
+      productText = 'B';
+      bgColor = '#c8e6c9 green lighten-4';
+    }
+
+    if ($activator.hasClass('#ef9a9a')) {
+      $activator.removeClass('#ef9a9a');
+      $activator.removeClass('red');
+      $activator.removeClass('lighten-3');
+    } else if ($(`#activator${i}`).hasClass('#fff9c4')) {
+      $activator.removeClass('#fff9c4');
+      $activator.removeClass('yellow');
+      $activator.removeClass('#lighten-4');
+    } else if ($(`#activator${i}`).hasClass('#c8e6c9')) {
+      $activator.removeClass('#c8e6c9');
+      $activator.removeClass('green');
+      $activator.removeClass('lighten-4');
+    }
+    $activator.addClass(bgColor);
+    $activator.text(productText);
   }
 }
 
@@ -413,8 +482,21 @@ function updateInfo(){
     mainData[currentID][objarr[i]] = formarr[i].value;
   }
 
-  saveCustomer();
-  Materialize.toast('Database Updated!', 2000);
+  for (let i = 0; i <= 35; i++) {
+    const product = mainData[currentID]['productInfo']['product' + i];
+    const prevNote = $(`#product-content${i}`).text();
+    const newNote = $(`#product-note${i}`).text();
+
+    if (newNote !== '') {
+      newNote += '\n';
+      product['note'] = prevNote + newNote;
+    }
+
+    // Add #product-stat when ben merges the html files
+    // product['status'] = parseInt($(`#product-stat${i}`).text());
+  }
+
+  updateCustomer(currentID);
 }
 
 function toggleNewCustomer() {
@@ -495,6 +577,7 @@ function toProdSearch() {
 
 $('#new-customer').on('click', toggleNewCustomer);
 $('#edit-customer').on('click', toggleEditCustomer);
+// $('#del-customer').on('click', toggleDeleteCustomer);
 
 $('#contact-toggle').on('change', () => {
   $('.contact').toggleClass('hidden');
@@ -532,15 +615,7 @@ $('#results-container').on('click', (e) => {
 
 (function init() {
   getMainData(makeModals);
-  makeModals(); // don't invoke this later (when the serverside is done);
-  $('.modal-trigger').leanModal({
-      dismissible: true,
-      in_duration: 300,
-      out_duration: 200,
-      starting_top: '4%',
-      ending_top: '10%'
-    }
-  );
+  //makeModals(); // don't invoke this later (when the serverside is done);
   makeResults();
 })();
 
